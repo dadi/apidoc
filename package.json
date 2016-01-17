@@ -1,0 +1,17 @@
+{
+  "name": "dadi-apidoc",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "aglio": "2.2.x",
+    "inflection": "^1.5.3",
+    "underscore": "~1.8.0",
+    "underscore.string": "^3.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Lambie <jameslambie@gmail.com>",
+  "license": "MIT"
+}
