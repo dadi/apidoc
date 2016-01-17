@@ -28,6 +28,8 @@ $ gem install awesome_print
 ## Add middleware
 
 ```js
+var apiDocs = require('dadi-apidoc');
+
 server.app.use('/api/:version/docs', function (req, res, next) {
 
   var options = {
