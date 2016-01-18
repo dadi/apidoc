@@ -13,7 +13,7 @@ api_name = File.basename(ARGV[0], ".json")
 host = ARGV[1]
 
 # Create directories for hars and snippets if doesn't exist
-FileUtils.mkdir_p(dir + "/embeds")
+#FileUtils.mkdir_p(dir + "/embeds")
 FileUtils.mkdir_p(dir + "/hars")
 FileUtils.mkdir_p(dir + "/snippets")
 
@@ -87,11 +87,11 @@ json['resourceGroups'].each do |rg|
         f.write(har.to_json)
       end
 
-      File.open(dir + "/embeds/#{name}.html", "w") do |f|
-        f.truncate(0)
-        embed = '<iframe src="//api.apiembed.com/?source=' + host + '/docs/hars/'+name+'.json&amp;targets=shell:curl,node:native,javascript:jquery,php:curl,python:requests,ruby:native,objc:nsurlsession" frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>'
-        f.write(embed)
-      end
+      # File.open(dir + "/embeds/#{name}.html", "w") do |f|
+      #   f.truncate(0)
+      #   embed = '<iframe src="//api.apiembed.com/?source=' + host + '/docs/hars/'+name+'.json&amp;targets=shell:curl,node:native,javascript:jquery,php:curl,python:requests,ruby:native,objc:nsurlsession" frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>'
+      #   f.write(embed)
+      # end
     end
   end
 end
