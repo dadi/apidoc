@@ -6,6 +6,8 @@
   "dependencies": {
     "aglio": "2.2.x",
     "inflection": "^1.5.3",
+    "mkdirp": "^0.5.1",
+    "protagonist": "1.2.5",
     "underscore": "~1.8.0",
     "underscore.string": "^3.2.2"
   },
