@@ -71,7 +71,7 @@ server.app.use('/api/:version/docs', function (req, res, next) {
 });
 ```
 
-## TODO
+## To do
 
 ### Documenting custom endpoints
 
