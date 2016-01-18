@@ -70,7 +70,9 @@ server.app.use('/api/:version/docs', function (req, res, next) {
 ```
 
 
-## Documenting custom endpoints
+## TODO
+
+### Documenting custom endpoints
 
 ```
 /**
