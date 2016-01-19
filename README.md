@@ -44,12 +44,15 @@ server.start(function() {
 });
 
 // add documentation route
+// the :version parameter allows this route to
+// respond to URLs such as /api/1.0/docs and /api/v2/docs
 server.app.use('/api/:version/docs', function (req, res, next) {
 
+  // get options from the config file
   var options = {
     host: config.get('server.host'),
     feedback: config.get('feedback'),
-    documentation: config.get('documentation')
+    documentation: config.get('apidoc')
   };
 
   apiDocs.init(app, options);
@@ -76,8 +79,15 @@ server.app.use('/api/:version/docs', function (req, res, next) {
 
 ```
 /**
-* Read in source files from file paths or glob patterns.
-*
-* @api public
-*/
-```
+ * Adds two numbers together.
+ *
+ * ```js
+ * var result = add(1, 2);
+ * ```
+ *
+ * @param {int} `num1` The first number.
+ * @param {int} `num2` The second number.
+ * @returns {int} The sum of the two numbers.
+ * @api public
+ */
+ ```
