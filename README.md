@@ -11,13 +11,17 @@ $ npm install httpsnippet --global
 $ npm install @dadi/apidoc --save
 ```
 
-Ensure sure your system has Ruby installed and the Ruby gem `awesome_print`:
+### Generating Code Snippets
+
+If you want to generate code snippets (made possible by the configuration option
+  `generateCodeSnippets`) you'll need to ensure sure your system has Ruby installed
+and the Ruby gem `awesome_print`:
 
 ```
 $ gem install awesome_print
 ```
 
-## Add documentation configuration to the API
+## Add an `apidoc` section to the API's configuration file
 
 ```js
 "apidoc": {
@@ -34,7 +38,10 @@ $ gem install awesome_print
 }
 ```
 
-## Add middleware
+## Add middleware route
+
+This exmaple shows a middleware route added to the installed API's `main.js` file,
+after the server has started.
 
 ```js
 var server = require('@dadi/api');
@@ -78,7 +85,7 @@ server.app.use('/api/:version/docs', function (req, res, next) {
 
 ### Documenting custom endpoints
 
-```
+```js
 /**
  * Adds two numbers together.
  *
@@ -91,7 +98,89 @@ server.app.use('/api/:version/docs', function (req, res, next) {
  * @returns {int} The sum of the two numbers.
  * @api public
  */
- ```
+```
+
+### Excluding Collections, Endpoints and Fields
+
+Often an API build contains collections and collection fields that are meant for
+internal use and including them in the API documentation is undersirable.
+
+To exclude collections and fields from your generated documentation, see the following
+sections.
+
+#### Excluding Collections
+
+Add a `private` property to the collection specification's `settings` section:
+
+```js
+{
+  "fields": {
+    "title": {
+      "type": "String",
+      "required": true
+    },
+    "author": {
+      "type": "Reference",
+      "settings": {
+        "collection": "people"
+      }
+    }
+  },
+  "settings": {
+    "cache": true,
+    "count": 40,
+    "sort": "title",
+    "sortOrder": 1,
+    "private": true
+  }
+}
+```
+
+#### Excluding Endpoints
+
+Add a `private` property to the endpoint file's `model.settings` section:
+
+```js
+module.exports.get = function (req, res, next) {
+  res.setHeader('content-type', 'application/json');
+  res.statusCode = 200;
+  res.end(JSON.stringify({message: 'Hello World'}));
+}
+
+module.exports.model = {
+  "settings": {
+    "cache": true,
+    "authenticate": false,
+    "private": true
+  }
+}
+```
+
+#### Excluding Fields
+
+Add a `private` property to the field specification:
+
+```js
+{
+  "fields": {
+    "title": {
+      "type": "String",
+      "required": true
+    },
+    "internalId": {
+      "type": "Number",
+      "required": true,
+      "private": true
+    }
+  },
+  "settings": {
+    "cache": true,
+    "count": 40,
+    "sort": "title",
+    "sortOrder": 1
+  }
+}
+```
 
 ## Licence
 
