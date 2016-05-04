@@ -1,4 +1,4 @@
-# api-doc
+# DADI API DOC
 
 API documentation middleware for DADI API.
 
@@ -6,10 +6,10 @@ API documentation middleware for DADI API.
 
 ```
 $ npm install httpsnippet --global
-$ npm install dadi-apidoc --save
+$ npm install @dadi/apidoc --save
 ```
 
-make sure your system has ruby and ruby gem `awesome_print`.
+Ensure sure your system has Ruby installed and the Ruby gem `awesome_print`:
 
 ```
 $ gem install awesome_print
@@ -17,12 +17,12 @@ $ gem install awesome_print
 
 ## Add documentation configuration to the API
 
-```
+```js
 "apidoc": {
   "title": "<Project Name> Content API",
   "description": "This is the _Content API_ for [Example](http://www.example.com).",
   "markdown": false,
-  "path": "/docs",
+  "path": "docs",
   "generateCodeSnippets": true,
   "themeVariables": "default",
   "themeTemplate": "triple",
@@ -39,7 +39,7 @@ var server = require('@dadi/api');
 var config = require('@dadi/api').Config;
 var log = require('@dadi/api').Log;
 
-var apiDocs = require('@dadi/apidoc');
+var apidoc = require('@dadi/apidoc');
 
 server.start(function() {
   log.get().info('API Started');
@@ -55,11 +55,11 @@ server.app.use('/api/:version/docs', function (req, res, next) {
     host: config.get('server.host'),
     feedback: config.get('feedback'),
     documentation: config.get('apidoc')
-  };
+  }
 
-  apiDocs.init(app, options);
+  apidoc.init(app, options);
 
-  apiDocs.run(function(result) {
+  apidoc.run(function(result) {
     if (options.documentation && options.documentation.markdown) {
       res.setHeader('Content-Type', 'text/plain');
     }
@@ -70,11 +70,9 @@ server.app.use('/api/:version/docs', function (req, res, next) {
     res.setHeader('Content-Length', Buffer.byteLength(result));
     res.statusCode = 200;
     res.end(result);
-  });
-});
+  })
+})
 ```
-
-## To do
 
 ### Documenting custom endpoints
 

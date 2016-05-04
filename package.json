@@ -1,7 +1,7 @@
 {
   "name": "@dadi/apidoc",
   "version": "1.2.0",
-  "description": "Middleware for generating API documentation for DADI API",
+  "description": "API documentation middleware for DADI API",
   "main": "index.js",
   "dependencies": {
     "aglio": "2.2.x",
