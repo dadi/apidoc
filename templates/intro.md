@@ -90,6 +90,3 @@ var req = http.request(options, function (res) {
 
 req.end();
 ```
-
-## HTTP Status Codes
-A small subset of common [HTTP Response Status Codes](https://github.com/dadi/api/blob/docs/docs/cache.md) are used.

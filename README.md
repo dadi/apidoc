@@ -35,11 +35,11 @@ $ gem install awesome_print
 ## Add middleware
 
 ```js
-var server = require('dadi-api');
-var config = require('dadi-api').Config;
-var log = require('dadi-api').Log;
+var server = require('@dadi/api');
+var config = require('@dadi/api').Config;
+var log = require('@dadi/api').Log;
 
-var apiDocs = require('dadi-apidoc');
+var apiDocs = require('@dadi/apidoc');
 
 server.start(function() {
   log.get().info('API Started');
