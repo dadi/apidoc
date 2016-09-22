@@ -5,24 +5,19 @@
 
 > API documentation middleware for DADI API
 
+* [Installation](#installation)
+* [Generating Code Snippets](#generating-code-snippets)
+* [Documenting custom endpoints](#documenting-custom-endpoints)
+* [Showing useful example values](#showing-useful-example-values)
+* [Excluding Collections, Endpoints and Fields](#excluding-collections-endpoints-and-fields)
+
 ## Installation
 
 ```
-$ npm install httpsnippet --global
 $ npm install @dadi/apidoc --save
 ```
 
-### Generating Code Snippets
-
-If you want to generate code snippets (made possible by the configuration option
-  `generateCodeSnippets`) you'll need to ensure sure your system has Ruby installed
-and the Ruby gem `awesome_print`:
-
-```
-$ gem install awesome_print
-```
-
-## Add an `apidoc` section to the API's configuration file
+#### Add an `apidoc` section to the API's configuration file
 
 ```js
 "apidoc": {
@@ -30,7 +25,7 @@ $ gem install awesome_print
   "description": "This is the _Content API_ for [Example](http://www.example.com).",
   "markdown": false,
   "path": "docs",
-  "generateCodeSnippets": true,
+  "generateCodeSnippets": false,
   "themeVariables": "default",
   "themeTemplate": "triple",
   "themeStyle": "default",
@@ -39,7 +34,7 @@ $ gem install awesome_print
 }
 ```
 
-## Initialise the middleware route
+#### Initialise the middleware
 
 This example shows API Doc being initialised in the installed API's entry point, the `main.js` file,
 after the server has started.
@@ -57,9 +52,28 @@ server.start(function() {
 require('@dadi/apidoc').init(server, config)
 ```
 
-### Documenting custom endpoints
+## Generating Code Snippets
 
-```js
+If you want to generate code snippets (made possible by the configuration option
+  `generateCodeSnippets`) you'll need to ensure sure your system has the following:
+
+1) Ruby, and the Ruby gem `awesome_print`:
+
+```
+$ gem install awesome_print
+```
+
+2) The `httpsnippet` package:
+
+```
+$ npm install httpsnippet --global
+```
+
+## Documenting custom endpoints
+
+API collections are automatically documented using values from with the collection schema files. To have your documentation include useful information about custom endpoints, add [JSDoc](http://usejsdoc.org/) comments to the endpoint files:
+
+```
 /**
  * Adds two numbers together.
  *
@@ -74,7 +88,50 @@ require('@dadi/apidoc').init(server, config)
  */
 ```
 
-### Excluding Collections, Endpoints and Fields
+## Showing useful example values
+
+To show example data in the documentation that isn't simply the default of "Hello World!",
+you can add properties to fields in the API collection schema.
+
+### `example`
+
+The `example` property is a static value that will be the same every time you view the documentation.
+
+```
+"platform": {
+  "type": "String",
+  "required": true,
+  "example": "twitter",
+  "validation": {
+    "regex": {
+      "pattern": "twitter|facebook|instagram"
+    }
+  }
+}
+```
+
+### `testDataFormat`
+
+The `testDataFormat` property allows you to specify any type from the [faker](https://github.com/FotoVerite/Faker.js) package, which will insert
+a random value of the selected type each time the documentation is viewed:
+
+```
+"email": {
+  "type": "String",
+  "required": true,
+  "validation": {
+    "regex": {
+      "pattern": ".+@.+"
+    }
+  },
+  "testDataFormat": "{{internet.email}}"
+}
+```
+
+See a list of available options [here](https://github.com/FotoVerite/Faker.js).
+
+
+## Excluding Collections, Endpoints and Fields
 
 Often an API build contains collections and collection fields that are meant for
 internal use and including them in the API documentation is undersirable.
@@ -82,7 +139,7 @@ internal use and including them in the API documentation is undersirable.
 To exclude collections and fields from your generated documentation, see the following
 sections.
 
-#### Excluding Collections
+### Excluding Collections
 
 Add a `private` property to the collection specification's `settings` section:
 
@@ -110,7 +167,7 @@ Add a `private` property to the collection specification's `settings` section:
 }
 ```
 
-#### Excluding Endpoints
+### Excluding Endpoints
 
 Add a `private` property to the endpoint file's `model.settings` section:
 
@@ -130,7 +187,7 @@ module.exports.model = {
 }
 ```
 
-#### Excluding Fields
+### Excluding Fields
 
 Add a `private` property to the field specification:
 
