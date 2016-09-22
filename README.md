@@ -13,7 +13,7 @@
 
 ## Installation
 
-```
+```shell
 $ npm install @dadi/apidoc --save
 ```
 
@@ -59,13 +59,13 @@ If you want to generate code snippets (made possible by the configuration option
 
 1) Ruby, and the Ruby gem `awesome_print`:
 
-```
+```shell
 $ gem install awesome_print
 ```
 
 2) The `httpsnippet` package:
 
-```
+```shell
 $ npm install httpsnippet --global
 ```
 
@@ -73,7 +73,7 @@ $ npm install httpsnippet --global
 
 API collections are automatically documented using values from with the collection schema files. To have your documentation include useful information about custom endpoints, add [JSDoc](http://usejsdoc.org/) comments to the endpoint files:
 
-```
+```js
 /**
  * Adds two numbers together.
  *
@@ -97,7 +97,7 @@ you can add properties to fields in the API collection schema.
 
 The `example` property is a static value that will be the same every time you view the documentation.
 
-```
+```js
 "platform": {
   "type": "String",
   "required": true,
@@ -115,7 +115,7 @@ The `example` property is a static value that will be the same every time you vi
 The `testDataFormat` property allows you to specify any type from the [faker](https://github.com/FotoVerite/Faker.js) package, which will insert
 a random value of the selected type each time the documentation is viewed:
 
-```
+```js
 "email": {
   "type": "String",
   "required": true,
@@ -173,9 +173,9 @@ Add a `private` property to the endpoint file's `model.settings` section:
 
 ```js
 module.exports.get = function (req, res, next) {
-  res.setHeader('content-type', 'application/json');
-  res.statusCode = 200;
-  res.end(JSON.stringify({message: 'Hello World'}));
+  res.setHeader('content-type', 'application/json')
+  res.statusCode = 200
+  res.end(JSON.stringify({message: 'Hello World'}))
 }
 
 module.exports.model = {
