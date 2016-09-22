@@ -1,8 +1,9 @@
 # DADI API DOC
 
-[![npm version](https://badge.fury.io/js/%40dadi%2Fapidoc.png)](https://badge.fury.io/js/%40dadi%2Fapidoc)
+[![npm (scoped)](https://img.shields.io/npm/v/@dadi/apidoc.svg?maxAge=10800&style=flat-square)](https://www.npmjs.com/package/@dadi/apidoc)
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
-API documentation middleware for DADI API.
+> API documentation middleware for DADI API
 
 ## Installation
 
@@ -38,49 +39,22 @@ $ gem install awesome_print
 }
 ```
 
-## Add middleware route
+## Initialise the middleware route
 
-This exmaple shows a middleware route added to the installed API's `main.js` file,
+This example shows API Doc being initialised in the installed API's entry point, the `main.js` file,
 after the server has started.
 
 ```js
-var server = require('@dadi/api');
-var config = require('@dadi/api').Config;
-var log = require('@dadi/api').Log;
-
-var apidoc = require('@dadi/apidoc');
+var server = require('@dadi/api')
+var config = require('@dadi/api').Config
+var log = require('@dadi/api').Log
 
 server.start(function() {
-  log.get().info('API Started');
-});
+  log.get().info('API Started')
+})
 
 // add documentation route
-// the :version parameter allows this route to
-// respond to URLs such as /api/1.0/docs and /api/v2/docs
-server.app.use('/api/:version/docs', function (req, res, next) {
-
-  // get options from the config file
-  var options = {
-    host: config.get('server.host'),
-    feedback: config.get('feedback'),
-    documentation: config.get('apidoc')
-  }
-
-  apidoc.init(app, options);
-
-  apidoc.run(function(result) {
-    if (options.documentation && options.documentation.markdown) {
-      res.setHeader('Content-Type', 'text/plain');
-    }
-    else {
-      res.setHeader('Content-Type', 'text/html');
-    }
-
-    res.setHeader('Content-Length', Buffer.byteLength(result));
-    res.statusCode = 200;
-    res.end(result);
-  })
-})
+require('@dadi/apidoc').init(server, config)
 ```
 
 ### Documenting custom endpoints

@@ -20,28 +20,28 @@ var options = {
   "headers": {
     "content-type": "application/json"
   }
-};
+}
 
 var credentials = JSON.stringify({
   clientId: "testClient",
   secret: "superSecret"
-});
+})
 
 var req = http.request(options, function (res) {
-  var chunks = [];
+  var chunks = []
 
   res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
+    chunks.push(chunk)
+  })
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
+    var body = Buffer.concat(chunks)
+    console.log(body.toString())
   });
 });
 
-req.write(credentials);
-req.end();
+req.write(credentials)
+req.end()
 ```
 
 #### Response
@@ -62,7 +62,7 @@ curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer 4172bb
 
 #### Example request using Node.JS
 ```js
-var http = require("http");
+var http = require("http")
 
 var options = {
   "hostname": "api.example.com",
@@ -73,20 +73,20 @@ var options = {
     "authorization": "Bearer 4172bbf1-0890-41c7-b0db-477095a288b6",
     "content-type": "application/json"
   }
-};
+}
 
 var req = http.request(options, function (res) {
-  var chunks = [];
+  var chunks = []
 
   res.on("data", function (chunk) {
-    chunks.push(chunk);
-  });
+    chunks.push(chunk)
+  })
 
   res.on("end", function () {
-    var body = Buffer.concat(chunks);
-    console.log(body.toString());
-  });
-});
+    var body = Buffer.concat(chunks)
+    console.log(body.toString())
+  })
+})
 
-req.end();
+req.end()
 ```

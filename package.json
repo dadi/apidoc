@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "aglio": "2.2.x",
+    "faker": "^3.1.0",
     "inflection": "^1.5.3",
     "mkdirp": "^0.5.1",
     "protagonist": "1.2.5",
