@@ -1,15 +1,30 @@
-# DADI API DOC
+# DADI API Documentation
 
 [![npm (scoped)](https://img.shields.io/npm/v/@dadi/apidoc.svg?maxAge=10800&style=flat-square)](https://www.npmjs.com/package/@dadi/apidoc)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
 > API documentation middleware for DADI API
 
+* [Introduction](#introduction)
 * [Installation](#installation)
 * [Generating Code Snippets](#generating-code-snippets)
 * [Documenting custom endpoints](#documenting-custom-endpoints)
 * [Showing useful example values](#showing-useful-example-values)
 * [Excluding Collections, Endpoints and Fields](#excluding-collections-endpoints-and-fields)
+
+## Introduction
+
+This package provides a set of auto-generated documentation for your API installation, reading information from the collection schemas and custom endpoints to describe the available HTTP methods and parameters required to interact with the API.
+
+##### A guide to acquiring an access token
+![Authentication](templates/authentication.png)
+
+##### Describing a GET request for the User collection
+![GET Request](templates/get.png)
+
+##### Describing a POST request for the User collection
+![POST Request](templates/post.png)
+
 
 ## Installation
 
@@ -51,6 +66,12 @@ server.start(function() {
 // add documentation route
 require('@dadi/apidoc').init(server, config)
 ```
+
+#### Browse the documentation
+
+By default the documentation can be browsed using the route `/api/1.0/docs`.
+
+For example of your API is running at `http://api.example.com` then your documentation is available at `http://api.example.com/api/1.0/docs`.
 
 ## Generating Code Snippets
 
@@ -212,6 +233,10 @@ Add a `private` property to the field specification:
   }
 }
 ```
+
+## Roadmap
+
+* Template customisation
 
 ## Licence
 
