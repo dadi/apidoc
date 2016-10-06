@@ -10,10 +10,13 @@
     "mkdirp": "^0.5.1",
     "protagonist": "1.2.5",
     "underscore": "~1.8.0",
-    "underscore.string": "^3.2.2"
+    "underscore.string": "^3.2.2",
+    "snyk": "^1.19.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,5 +30,6 @@
   "license": "MIT",
   "devDependencies": {
     "coffee-script": "^1.10.0"
-  }
+  },
+  "snyk": true
 }
