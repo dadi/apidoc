@@ -1,6 +1,6 @@
 {
   "name": "@dadi/apidoc",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "API documentation middleware for DADI API",
   "main": "index.js",
   "dependencies": {
