@@ -1,4 +1,4 @@
-version: v1.5.0
+version: v1.5.2
 ignore: {}
 patch:
   'npm:minimatch:20160620':
@@ -15,3 +15,6 @@ patch:
         patched: '2016-10-06T06:49:29.319Z'
     - aglio > socket.io > socket.io-client > engine.io-client > ws:
         patched: '2016-10-06T06:49:29.319Z'
+  'npm:tough-cookie:20160722':
+    - aglio > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
+        patched: '2016-10-06T07:20:16.029Z'
