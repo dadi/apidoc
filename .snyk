@@ -1,5 +1,7 @@
-version: v1.5.2
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.0
 ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:minimatch:20160620':
     - aglio > aglio-theme-olio > stylus > glob > minimatch:
@@ -18,3 +20,20 @@ patch:
   'npm:tough-cookie:20160722':
     - aglio > chokidar > fsevents > node-pre-gyp > request > tough-cookie:
         patched: '2016-10-06T07:20:16.029Z'
+  'npm:ms:20170412':
+    - aglio > socket.io > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
+    - aglio > socket.io > engine.io > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
+    - aglio > socket.io > socket.io-adapter > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
+    - aglio > socket.io > socket.io-client > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
+    - aglio > socket.io > socket.io-client > engine.io-client > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
+    - aglio > socket.io > socket.io-parser > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
+    - aglio > socket.io > socket.io-adapter > socket.io-parser > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
+    - aglio > socket.io > socket.io-client > socket.io-parser > debug > ms:
+        patched: '2017-05-24T03:08:08.192Z'
