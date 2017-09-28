@@ -40,3 +40,20 @@ patch:
   'npm:uglify-js:20150824':
     - aglio > aglio-theme-olio > jade > transformers > uglify-js:
         patched: '2017-05-25T00:10:54.507Z'
+  'npm:debug:20170905':
+    - aglio > socket.io > debug:
+        patched: '2017-09-27T23:53:12.428Z'
+    - aglio > socket.io > engine.io > debug:
+        patched: '2017-09-27T23:53:12.428Z'
+    - aglio > socket.io > socket.io-adapter > debug:
+        patched: '2017-09-27T23:53:12.428Z'
+    - aglio > socket.io > socket.io-client > debug:
+        patched: '2017-09-27T23:53:12.428Z'
+    - aglio > socket.io > socket.io-client > engine.io-client > debug:
+        patched: '2017-09-27T23:53:12.428Z'
+    - aglio > socket.io > socket.io-parser > debug:
+        patched: '2017-09-27T23:53:12.428Z'
+    - aglio > socket.io > socket.io-adapter > socket.io-parser > debug:
+        patched: '2017-09-27T23:53:12.428Z'
+    - aglio > socket.io > socket.io-client > socket.io-parser > debug:
+        patched: '2017-09-27T23:53:12.428Z'
