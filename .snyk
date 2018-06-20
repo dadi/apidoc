@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.7.1
+version: v1.12.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -57,3 +57,12 @@ patch:
         patched: '2017-09-27T23:53:12.428Z'
     - aglio > socket.io > socket.io-client > socket.io-parser > debug:
         patched: '2017-09-27T23:53:12.428Z'
+  'npm:hoek:20180212':
+    - aglio > aglio-theme-olio > less > request > hawk > hoek:
+        patched: '2018-06-20T05:29:53.280Z'
+    - aglio > aglio-theme-olio > less > request > hawk > boom > hoek:
+        patched: '2018-06-20T05:29:53.280Z'
+    - aglio > aglio-theme-olio > less > request > hawk > sntp > hoek:
+        patched: '2018-06-20T05:29:53.280Z'
+    - aglio > aglio-theme-olio > less > request > hawk > cryptiles > boom > hoek:
+        patched: '2018-06-20T05:29:53.280Z'
