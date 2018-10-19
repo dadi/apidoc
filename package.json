@@ -4,19 +4,20 @@
   "description": "API documentation middleware for DADI API",
   "main": "index.js",
   "dependencies": {
-    "aglio": "2.2.x",
+    "aglio": "2.2.1",
     "drafter": "^1.2.0",
     "faker": "^3.1.0",
     "inflection": "^1.5.3",
     "mkdirp": "^0.5.1",
-    "snyk": "^1.71.0",
+    "snyk": "^1.104.1",
     "underscore": "~1.8.0",
-    "underscore.string": "^3.2.2"
+    "underscore.string": "^3.3.5"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish": "npm run snyk-protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
